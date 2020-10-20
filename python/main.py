@@ -47,7 +47,7 @@ def query_bq(gs_csv_file):
     query_job = client.query(query, job_config=job_config, project=os.environ.get('PROJECT_ID'))  # Make an API request.
     # query_job = client.query(query, job_config=job_config, project=project)  # Make an API request.
 
-    print("The query data:")
+    # print("The query data:")
     # for row in query_job:
     #     print("")
     #     for data in row:
@@ -90,7 +90,7 @@ def query_bq(gs_csv_file):
 def send_mail(msg_body, msg_subject):
 
     message = Mail(
-        from_email='cf@sink.sendgrid.net',
+        from_email=os.environ.get('SENDER'),
         # to_emails=recipients,
         to_emails=os.environ.get('RECIPIENT'),
         subject=msg_subject,
